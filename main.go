@@ -1,7 +1,46 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type Article struct {
+	Title   string `json:"title"`
+	Desc    string `json:"desc"`
+	Content string `json:"content"`
+}
+
+type Articles []Article
+
+func allArticles(w http.ResponseWriter, r *http.Request) {
+
+	articles := Articles{
+		Article{Title: "Cyclone ", Desc: "Cyclone in Eastern-India", Content: "https://www.google.com"},
+		Article{Title: "Cyclone1 ", Desc: "Cyclone in Eastern-India", Content: "https://www.google.com"},
+		Article{Title: "Cyclone2", Desc: "Cyclone in Eastern-India", Content: "https://www.google.com"},
+	}
+
+	fmt.Println("Endpoint Hit :All Article Endpoint")
+	json.NewEncoder(w).Encode(articles)
+}
+
+func homePage(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Endpoint hit")
+	fmt.Fprintf(w, "HomePage EndPoint Hit")
+
+}
+
+func handleRequests() {
+
+	http.HandleFunc("/", homePage)
+	http.HandleFunc("/articles", allArticles)
+	log.Fatal(http.ListenAndServe(":8001", nil))
+}
 
 func main() {
-fmt.Print("Hello World")
+	fmt.Println("Executing the main function")
+	handleRequests()
 }
