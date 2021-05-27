@@ -51,4 +51,5 @@ func testPostArticles(writer http.ResponseWriter, request *http.Request) {
 func main() {
 	fmt.Println("Executing the main function")
 	handleRequests()
+
 }
