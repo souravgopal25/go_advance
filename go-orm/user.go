@@ -17,12 +17,23 @@ var db *gorm.DB
 var err error
 
 func InitialMigration() {
-	//	dbDriver := "mysql"
+	dbDriver := "mysql"
 	dbUser := "Sourav"
 	dbPass := "rootpass11"
-	dbName := "usertable"
+	dbName := "studentDB"
 	dsn := dbUser + ":" + dbPass + "@tcp(127.0.0.1:3306)/" + dbName
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(mysql.New(mysql.Config{
+		DriverName:                dbDriver,
+		DSN:                       dsn,
+		Conn:                      nil,
+		SkipInitializeWithVersion: false,
+		DefaultStringSize:         0,
+		DefaultDatetimePrecision:  nil,
+		DisableDatetimePrecision:  false,
+		DontSupportRenameIndex:    false,
+		DontSupportRenameColumn:   false,
+		DontSupportForShareClause: false,
+	}), &gorm.Config{})
 	if err != nil {
 		panic("error")
 		fmt.Printf("Failed to connect to Database")
@@ -32,7 +43,7 @@ func InitialMigration() {
 	db.AutoMigrate(&User{})
 
 	//Create
-	db.Create(&User{Name: "Sourav Sharma", Email: "souravgopal25@gmail.com"})
+	db.Create(&User{Name: "Shrestha Sonali", Email: "shrestha.sonali@gmail.com"})
 
 }
 
