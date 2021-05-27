@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="go build go-orm/" type="GoApplicationRunConfiguration" factoryName="Go Application" singleton="false" nameIsGenerated="true">
+  <configuration default="false" name="go build go-websocket/" type="GoApplicationRunConfiguration" factoryName="Go Application" singleton="false" nameIsGenerated="true">
     <module name="go_advance" />
     <working_directory value="$PROJECT_DIR$" />
     <go_parameters value="-i" />
     <kind value="DIRECTORY" />
     <filePath value="$PROJECT_DIR$/../go_advance|$PROJECT_DIR$/main.go" />
-    <directory value="$PROJECT_DIR$/go-orm" />
+    <directory value="$PROJECT_DIR$/go-websocket" />
     <method v="2" />
   </configuration>
 </component>
