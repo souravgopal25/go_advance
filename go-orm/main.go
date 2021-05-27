@@ -23,6 +23,7 @@ func home(writer http.ResponseWriter, request *http.Request) {
 
 func main() {
 	fmt.Printf("Executing Main Function")
-	//handleRequests()
 	InitialMigration()
+	handleRequests()
+
 }
