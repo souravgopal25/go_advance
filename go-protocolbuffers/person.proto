@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package main;
+
+message Address{
+    string city=1;
+    string state=2;
+    string country=3;
+}
+
+message Student{
+    string name=1;
+    string email=2;
+    string phone=3;
+    Address address = 4;
+}
